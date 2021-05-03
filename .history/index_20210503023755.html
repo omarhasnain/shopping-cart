@@ -65,8 +65,8 @@
 
                             <div class="col-md-4 status">
                                 <h5 id="total-price">$1,278</h5>
-                                <h5 id="tax-amount">$0</h5>
-                                <h5 id="grand-total">$1,278</h5>
+                                <h5>$0</h5>
+                                <h5>$1,278</h5>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,9 @@
                 if (isIncrease == false && productCount > 0) {
                     productNewCount = productCount - 1;
                 }
-                document.getElementById(product + '-count').value = productNewCount;
+
+                productInput.value = productNewCount;
+                //const caseTotal = caseNewCount * 59;
                 let productTotal = 0;
                 if (product == 'phone') {
                     productTotal = productNewCount * 1219;
@@ -101,18 +103,14 @@
             }
 
             function calculateTotal() {
+                const phoneInput = document.getElementById('phone-count');
+                const phoneCount = parseInt(phoneInput.value);
 
-                const phoneCount = getInputValue('phone');
                 const caseCount = getInputValue('case');
 
                 const totalPrice = phoneCount * 1219 + caseCount * 59;
                 document.getElementById('total-price').innerText = '$' + totalPrice;
 
-                const tax = Math.round(totalPrice * 0.1);
-                document.getElementById('tax-amount').innerText = '$' + tax;
-
-                const grandTotal = totalPrice + tax;
-                document.getElementById('grand-total').innerText = '$' + grandTotal;
             }
 
 

@@ -101,14 +101,15 @@
             }
 
             function calculateTotal() {
+                const phoneInput = document.getElementById('phone-count');
+                const phoneCount = parseInt(phoneInput.value);
 
-                const phoneCount = getInputValue('phone');
                 const caseCount = getInputValue('case');
 
                 const totalPrice = phoneCount * 1219 + caseCount * 59;
                 document.getElementById('total-price').innerText = '$' + totalPrice;
 
-                const tax = Math.round(totalPrice * 0.1);
+                const tax = totalPrice * 0.1;
                 document.getElementById('tax-amount').innerText = '$' + tax;
 
                 const grandTotal = totalPrice + tax;
